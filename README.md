@@ -28,10 +28,10 @@ Build a minimal **AIDL-based HAL** named IRpilight.aidl to toggle Raspberry PI 4
 - Execute on AAOS16 running on Raspberry pi 4
 
 ### Adopting Stable AIDL in HAL Implementations
-*Implementations of HAL in Android are found in the hardware/interface directory while the AIDL generated HAL interfaces are found in the aidl directory. For instance, the rpilight AIDL HAL is at hardware/interfaces/rpilight; the following shows the directory structure of the files.*
+*Implementations of HAL in Android are found in the hardware/interface directory while the AIDL generated HAL interfaces are found in the aidl directory. For instance, the rpilight AIDL HAL is at hardware/interfaces/rpilight; the following shows the directory structure of the files.*  
+<img width="446" height="507" alt="rpilight_folder_structure" src="https://github.com/user-attachments/assets/ff0e3af8-4f4e-4543-8028-b1335878ec38" />
 
 HALs that use AIDL to communicate between framework components (for example, System. img) and hardware components (for example, vendor. img) must use Stable AIDL, It can be observed where there are interactions between system and vendor partition, these use Stable AIDL. The following changes are needed to make the use of an AIDL interface between the system and the vendor possible.  
-<img width="446" height="507" alt="rpilight_folder_structure" src="https://github.com/user-attachments/assets/ff0e3af8-4f4e-4543-8028-b1335878ec38" />
 
 
 ### 🧩 1. Define AIDL Interface
