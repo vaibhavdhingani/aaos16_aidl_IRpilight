@@ -12,7 +12,7 @@ For those unfamiliar, **Android Open-Source Platform (AOSP)** is built on the Li
 - The **Vendor/OEM** implements this API using real hardware drivers or emulation
 
 ### Adding a Custom AIDL HAL to the Android Stack
-To integrate a new custom AIDL HAL into the Android stack, it is crucial to comprehend the AOSP layers and the way a custom HAL may correspond with the rest of the stack. Understanding the **hardware abstraction layer in Android** is essential, as it acts as a bridge between the device hardware and the higher-level system components, ensuring smooth communication and modular implementation. The next diagram represents the AOSP stack, where each layer is presented, as well as the moment of integration of the tested custom HAL along with the existing ones.
+To integrate a new custom AIDL HAL into the Android stack, it is crucial to comprehend the AOSP layers and the way a custom HAL may correspond with the rest of the stack. Understanding the **hardware abstraction layer in Android** is essential, as it acts as a bridge between the device hardware and the higher-level system components, ensuring smooth communication and modular implementation. The next diagram represents the AOSP stack, where each layer is presented, as well as the moment of integration of the tested custom HAL along with the existing ones.  
 <img width="587" height="864" alt="aaos_aidl_arch" src="https://github.com/user-attachments/assets/121905d5-c85d-42dd-a410-63fe9f7d7cf3" />
 
 
@@ -30,7 +30,7 @@ Build a minimal **AIDL-based HAL** named IRpilight.aidl to toggle Raspberry PI 4
 ### Adopting Stable AIDL in HAL Implementations
 *Implementations of HAL in Android are found in the hardware/interface directory while the AIDL generated HAL interfaces are found in the aidl directory. For instance, the rpilight AIDL HAL is at hardware/interfaces/rpilight; the following shows the directory structure of the files.*
 
-HALs that use AIDL to communicate between framework components (for example, System. img) and hardware components (for example, vendor. img) must use Stable AIDL, It can be observed where there are interactions between system and vendor partition, these use Stable AIDL. The following changes are needed to make the use of an AIDL interface between the system and the vendor possible.
+HALs that use AIDL to communicate between framework components (for example, System. img) and hardware components (for example, vendor. img) must use Stable AIDL, It can be observed where there are interactions between system and vendor partition, these use Stable AIDL. The following changes are needed to make the use of an AIDL interface between the system and the vendor possible.  
 <img width="446" height="507" alt="rpilight_folder_structure" src="https://github.com/user-attachments/assets/ff0e3af8-4f4e-4543-8028-b1335878ec38" />
 
 
@@ -347,7 +347,7 @@ The Android application serves as the user interface. Using the RpiLEDControl ap
 **RpiLEDControl App Structure**  
 In the RpiLEDControl app:
 - MainActivity.java: Implement functionality to control the LED.
-- res directory: Add necessary resources to create a custom user interface.
+- res directory: Add necessary resources to create a custom user interface.  
 <img width="343" height="304" alt="rpilight_app_folder_structure" src="https://github.com/user-attachments/assets/b07c0aaf-efad-4684-a50e-ec5115ea090e" />
 
 
