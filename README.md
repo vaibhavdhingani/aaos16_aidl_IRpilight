@@ -232,15 +232,14 @@ service android.hardware.rpilight-service /vendor/bin/hw/android.hardware.rpilig
         group system
 ```
 
-**service rpilight:** Declares a service named rpilight.
+**service rpilight:** Declares a service named rpilight.  
 **/vendor/bin/hw/android.hardware.rpilight-service:** The executable that will be launched when this service starts.
-- This binary is typically the AIDL HAL implementation binary, compiled via the defaultServiceImplementation = true directive in Android.bp.
-
-**class hal**
+- This binary is typically the AIDL HAL implementation binary, compiled via the defaultServiceImplementation = true directive in Android.bp.  
+**class hal**  
 Assigns this service to the hal class.
 - The hal class is triggered during early boot, typically during init, so your HAL starts early in the boot process (before system services).  
-**user system**
-**group system**
+**user system**  
+**group system**  
 Specifies that the service should run as the system user and group.
 - This determines what permissions the service will have.
 - For system user/group is common for HALs because it has sufficient privileges to access devices or Binder.
