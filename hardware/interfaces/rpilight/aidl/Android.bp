@@ -1,0 +1,30 @@
+package {
+    default_applicable_licenses: ["hardware_interfaces_license"],
+}
+
+aidl_interface {
+    name: "android.hardware.rpilight",
+    vendor_available: true,
+    srcs: ["android/hardware/rpilight/*.aidl"],
+    stability: "vintf",
+    owner: "vaibhav dhingani",
+    backend: {
+        cpp: {
+            enabled: false,
+        },
+        java: {
+            sdk_version: "module_current",
+        },
+        ndk: {
+            enabled: true,
+        },
+    },
+    versions_with_info: [
+        {
+            version: "1",
+            imports: [],
+        },
+
+    ],
+    frozen: true,
+}

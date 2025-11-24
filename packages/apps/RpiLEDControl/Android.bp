@@ -1,0 +1,16 @@
+android_app {
+    name: "RpiLEDControl",
+    srcs: ["src/**/*.java",],
+    platform_apis: true,
+    resource_dirs: [
+        "res",
+    ],
+    aidl: {
+      include_dirs:[
+        "hardware/interfaces/rpilight",
+      ]
+    }, 
+    static_libs: [ 
+        "android.hardware.rpilight-V1-java",
+    ],
+}

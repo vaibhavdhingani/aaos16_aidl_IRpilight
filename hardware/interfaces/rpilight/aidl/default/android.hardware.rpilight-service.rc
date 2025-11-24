@@ -1,0 +1,5 @@
+service android.hardware.rpilight /vendor/bin/hw/android.hardware.rpilight-service
+        interface aidl android.hardware.rpilight.IRpilight/default
+        class hal
+        user system
+        group system
