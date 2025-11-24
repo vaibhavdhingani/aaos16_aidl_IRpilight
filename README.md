@@ -48,8 +48,8 @@ interface IRpilight {
 
 #### 🔍 What is VINTF?
 **VINTF (Vendor Interface)** ensures that:
-•	The **framework and vendor** parts of the OS remain **compatible**, even if updated separately.
-•	The HAL interface must be **versioned and stable.**
+- The **framework and vendor** parts of the OS remain **compatible**, even if updated separately.
+- The HAL interface must be **versioned and stable.**
 
 ### 🧱 2. AIDL Android.bp
 
