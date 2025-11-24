@@ -7,9 +7,9 @@ For those unfamiliar, **Android Open-Source Platform (AOSP)** is built on the Li
 
 ### 🔍 Why HAL Exists
 *Android runs on a wide variety of devices. Instead of writing custom framework code for every hardware, HAL allows:*
-- **🔁 Standardized Interfaces ↔ Custom Implementations** 
-- The **Android Framework** talks to a **standard API**
-- The **Vendor/OEM** implements this API using real hardware drivers or emulation
+>- **🔁 Standardized Interfaces ↔ Custom Implementations** 
+>- The **Android Framework** talks to a **standard API**
+>- The **Vendor/OEM** implements this API using real hardware drivers or emulation
 
 ### Adding a Custom AIDL HAL to the Android Stack
 To integrate a new custom AIDL HAL into the Android stack, it is crucial to comprehend the AOSP layers and the way a custom HAL may correspond with the rest of the stack. Understanding the **hardware abstraction layer in Android** is essential, as it acts as a bridge between the device hardware and the higher-level system components, ensuring smooth communication and modular implementation. The next diagram represents the AOSP stack, where each layer is presented, as well as the moment of integration of the tested custom HAL along with the existing ones.  
@@ -18,14 +18,14 @@ To integrate a new custom AIDL HAL into the Android stack, it is crucial to comp
 
 ### GOAL
 Build a minimal **AIDL-based HAL** named IRpilight.aidl to toggle Raspberry PI 4 on board LED with:
-- A single method: int ledControl(in int state);
-- Full HAL skeleton:
-- AIDL file
-- C++ service implementation
-- Init .rc file
-- Android.bp files
-- Device manifest registration
-- Execute on AAOS16 running on Raspberry pi 4
+>- A single method: int ledControl(in int state);
+>- Full HAL skeleton:
+>- AIDL file
+>- C++ service implementation
+>- Init .rc file
+>- Android.bp files
+>- Device manifest registration
+>- Execute on AAOS16 running on Raspberry pi 4
 
 ### Adopting Stable AIDL in HAL Implementations
 *Implementations of HAL in Android are found in the hardware/interface directory while the AIDL generated HAL interfaces are found in the aidl directory. For instance, the rpilight AIDL HAL is at hardware/interfaces/rpilight; the following shows the directory structure of the files.*  
@@ -48,8 +48,8 @@ interface IRpilight {
 
 #### 🔍 What is VINTF?
 **VINTF (Vendor Interface)** ensures that:
-- The **framework and vendor** parts of the OS remain **compatible**, even if updated separately.
-- The HAL interface must be **versioned and stable.**
+>- The **framework and vendor** parts of the OS remain **compatible**, even if updated separately.
+>- The HAL interface must be **versioned and stable.**
 
 ### 🧱 2. AIDL Android.bp
 
@@ -96,10 +96,10 @@ $ mmm hardware/interfaces/rpilight/
 ```
 
 The system generates:
-- BnRpilight.h (C++ server-side base class)
-- BpRpilight.h (C++ client-side proxy)
-- I*Hal.h interfaces
-- Stub and proxy binder code
+>- BnRpilight.h (C++ server-side base class)
+>- BpRpilight.h (C++ client-side proxy)
+>- I*Hal.h interfaces
+>- Stub and proxy binder code
 
 Location: under 📄 out/soong/.intermediates/android.hardware.rpilight/.../gen/include/aidl/android/hardware/rpilight
 
@@ -234,15 +234,15 @@ service android.hardware.rpilight-service /vendor/bin/hw/android.hardware.rpilig
 
 **service rpilight:** Declares a service named rpilight.  
 **/vendor/bin/hw/android.hardware.rpilight-service:** The executable that will be launched when this service starts.
-- This binary is typically the AIDL HAL implementation binary, compiled via the defaultServiceImplementation = true directive in Android.bp.  
-**class hal**  
-Assigns this service to the hal class.
-- The hal class is triggered during early boot, typically during init, so your HAL starts early in the boot process (before system services).  
+>- This binary is typically the AIDL HAL implementation binary, compiled via the defaultServiceImplementation = true directive in Android.bp.
+
+**class hal**  Assigns this service to the hal class.
+>-    The hal class is triggered during early boot, typically during init, so your HAL starts early in the boot process (before system services).  
+
 **user system**  
-**group system**  
-Specifies that the service should run as the system user and group.
-- This determines what permissions the service will have.
-- For system user/group is common for HALs because it has sufficient privileges to access devices or Binder.
+**group system** Specifies that the service should run as the system user and group.
+>- This determines what permissions the service will have.
+>- For system user/group is common for HALs because it has sufficient privileges to access devices or Binder.
 
 
 ### 🧰 5. HAL Service Build File
@@ -335,7 +335,7 @@ $ adb shell /vendor/bin/hw/android.hardware.rpilight-service
 $ adb shell lshal | grep rpilight
 $ adb shell service list | grep rpilight
 ```
-Java Test App to Call **Rpilight::ledControl(in int state)**.
+Java Test App to Call **Rpilight::ledControl(in int state)**.  
 You can write a Java test client that connects to your HAL using IBinder and IRpilight.Stub.asInterface().
 
 
@@ -345,14 +345,14 @@ The Android application serves as the user interface. Using the RpiLEDControl ap
 
 **RpiLEDControl App Structure**  
 In the RpiLEDControl app:
-- MainActivity.java: Implement functionality to control the LED.
-- res directory: Add necessary resources to create a custom user interface.  
+>- MainActivity.java: Implement functionality to control the LED.
+>- res directory: Add necessary resources to create a custom user interface.  
 <img width="343" height="304" alt="rpilight_app_folder_structure" src="https://github.com/user-attachments/assets/b07c0aaf-efad-4684-a50e-ec5115ea090e" />
 
 
 **Accessing System Service Interface**  
 To access the rpilight service method from the frameworks:
-- Obtain the system service interface to facilitate communication with the rpilight service
+>- Obtain the system service interface to facilitate communication with the rpilight service
 
 📄 MainActivity.java
 ```
