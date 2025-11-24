@@ -238,7 +238,7 @@ service android.hardware.rpilight-service /vendor/bin/hw/android.hardware.rpilig
 
 **class hal**
 Assigns this service to the hal class.
-- The hal class is triggered during early boot, typically during init, so your HAL starts early in the boot process (before system services).
+- The hal class is triggered during early boot, typically during init, so your HAL starts early in the boot process (before system services).  
 **user system**
 **group system**
 Specifies that the service should run as the system user and group.
